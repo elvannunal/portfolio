@@ -6,14 +6,14 @@ import { useTranslation } from "react-i18next";
 
 const Header: React.FC = () => {
   const { dark, toggle } = useContext(ThemeContext);
-  const { i18n } = useTranslation(); // i18next bağlandı
+  const { i18n } = useTranslation(); 
   const [langOpen, setLangOpen] = useState(false);
-  const [lang, setLang] = useState(i18n.language); // varsayılan dili al
+  const [lang, setLang] = useState(i18n.language); 
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng); // i18next dili değiştir
-    setLang(lng); // butondaki yazıyı güncelle
-    setLangOpen(false); // dropdown kapat
+    i18n.changeLanguage(lng); 
+    setLang(lng); 
+    setLangOpen(false); 
   };
 
   return (
