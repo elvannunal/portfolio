@@ -61,6 +61,7 @@ const Illustration: React.FC = () => {
           <rect x="188.3" y="377.72" width="64.27" height="2.36" fill="#eaeaea" />
         </g>
       </svg>
+      
     </motion.div>
   );
 };

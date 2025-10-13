@@ -4,32 +4,37 @@ import Header from "../Header/Header";
 import Illustration from "./Illustration";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useTranslation } from "react-i18next";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Home: React.FC = () => {
   const { dark } = useContext(ThemeContext);
   const { t } = useTranslation();
-
+  const box = {
+    width: 40,
+    height: 40,
+    backgroundColor: "#9911ff",
+    borderRadius: 8,
+    gap: 1,
+    marginTop: 10
+  }
   return (
     <div
-      className={`min-h-screen transition-colors duration-500 ${
-        dark
-          ? "bg-gradient-to-br from-gray-900 via-purple-950 to-black"
-          : "bg-gradient-to-br from-gray-50 via-purple-100 to-blue-50"
-      }`}
+      className={`min-h-screen transition-colors duration-500 ${dark
+        ? "bg-gradient-to-br from-gray-900 via-purple-950 to-black"
+        : "bg-gradient-to-br from-gray-50 via-purple-100 to-blue-50"
+        }`}
     >
       <Header />
 
       <section className="flex items-center justify-center min-h-screen px-4 md:px-8 pt-20 relative overflow-hidden">
         {/* Background Blobs */}
         <div
-          className={`absolute top-32 right-20 w-80 h-80 rounded-full blur-3xl opacity-30 ${
-            dark ? "bg-purple-800" : "bg-purple-300"
-          }`}
+          className={`absolute top-32 right-20 w-80 h-80 rounded-full blur-3xl opacity-30 ${dark ? "bg-purple-800" : "bg-purple-300"
+            }`}
         />
         <div
-          className={`absolute bottom-32 left-20 w-80 h-80 rounded-full blur-3xl opacity-30 ${
-            dark ? "bg-indigo-900" : "bg-cyan-200"
-          }`}
+          className={`absolute bottom-32 left-20 w-80 h-80 rounded-full blur-3xl opacity-30 ${dark ? "bg-indigo-900" : "bg-cyan-200"
+            }`}
         />
 
         <div className="max-w-7xl w-full relative z-10">
@@ -54,9 +59,8 @@ const Home: React.FC = () => {
               </motion.div>
 
               <motion.h1
-                className={`text-6xl md:text-7xl lg:text-8xl font-bold mb-4 leading-tight ${
-                  dark ? "text-purple-400" : "text-purple-700"
-                }`}
+                className={`text-6xl md:text-7xl lg:text-8xl font-bold mb-4 leading-tight ${dark ? "text-purple-400" : "text-purple-700"
+                  }`}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -66,9 +70,8 @@ const Home: React.FC = () => {
 
               {/* Title */}
               <motion.p
-                className={`text-2xl md:text-3xl font-semibold mb-6 ${
-                  dark ? "text-purple-300" : "text-purple-600"
-                }`}
+                className={`text-2xl md:text-3xl font-semibold mb-6 ${dark ? "text-purple-300" : "text-purple-600"
+                  }`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
@@ -78,15 +81,55 @@ const Home: React.FC = () => {
 
               {/* Description */}
               <motion.p
-                className={`text-lg leading-relaxed mb-8 ${
-                  dark ? "text-gray-300" : "text-gray-700"
-                }`}
+                className={`text-lg leading-relaxed mb-8 ${dark ? "text-gray-300" : "text-gray-700"
+                  }`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-               {t("home_description")}
+                {t("home_description")}
               </motion.p>
+              <div className="flex items-center justify-center mt-6">
+                <div className="flex items-center justify-center gap-6">
+                  {/* GitHub */}
+                  <motion.a
+                    href="https://github.com/elvannunal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.8 }}
+                    className={`flex items-center justify-center`}
+                    style={box}
+                  >
+                    <Github size={30} className={`text-gray-700 dark:text-gray-300 hover:text-grey-600 transition-colors`} />
+                  </motion.a>
+
+                  {/* LinkedIn */}
+                  <motion.a
+                    href="https://www.linkedin.com/in/elvan-%C3%BCnal-b88a33225/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.8 }}
+                    className="flex items-center justify-center"
+                    style={box}
+                  >
+                    <Linkedin size={30} className={`text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors`} />
+                  </motion.a>
+
+                  {/* Mail */}
+                  <motion.a
+                    href="mailto:elvanunalll@gmail.com"
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.8 }}
+                    className="flex items-center justify-center"
+                    style={box}
+                  >
+                    <Mail size={30} className={`text-gray-700 dark:text-gray-300 hover:text-grey-500 transition-colors`} />
+                  </motion.a>
+                </div>
+              </div>
+
             </motion.div>
 
             {/* Right Side Illustration */}

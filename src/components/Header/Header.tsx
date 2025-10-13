@@ -32,8 +32,9 @@ const Header: React.FC = () => {
       >
         Elvan
       </motion.div>
+ 
 
-      <nav className="hidden md:flex items-center gap-8">
+      <nav className="hidden xl:flex items-center gap-8">
         {["About", "Projects", "Contact"].map((item) => (
           <motion.a
             key={item}
