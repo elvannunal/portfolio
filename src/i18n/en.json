@@ -1,0 +1,14 @@
+{
+    "home_title": "Hi, I'm Elvan Ünal",
+    "home_subtitle": "Frontend Developer creating modern, responsive web experiences.",
+    "view_projects": "View Projects",
+    "contact": "Contact Me",
+    "header_home":"Home",
+    "header_about":"About",
+    "header_projects":"Projects",
+    "header_contact":"Contact",
+    "intro_title" : "Introduction",
+    "intro_text": "Versatile Software Developer with experience in frontend and backend development, specializing in Angular, React.js, ASP.NET Core, and TypeScript. Skilled in building scalable APIs, creating responsive UIs, and working in Agile/Scrum teams. Currently expanding expertise in React Native to deliver cross-platform mobile applications.",
+    "about_title": "About Me",
+    "about_text": "As a highly skilled software developer with a passion for creating user-friendly and efficient applications, I have honed my skills in frontend development and have become well-versed in a variety of programming languages and technologies.\n\nMy expertise lies in Angular, React, React Native, TypeScript, ASP.NET Web API, MVC, and PostgreSQL. With years of experience in these areas, I have a deep understanding of their capabilities and how to leverage them to deliver high-quality solutions.\n\nThroughout my career, I have worked on various projects, both independently and as part of a team, and have consistently delivered results that exceed expectations. My strong problem-solving skills and attention to detail have allowed me to identify and resolve complex technical issues, ensuring the smooth functioning of the applications I have worked on.\n\nI am a continuous learner, always eager to explore new technologies and stay updated with the latest industry trends. This has enabled me to adapt to changing requirements and deliver cutting-edge solutions that meet the evolving needs of clients."
+}
