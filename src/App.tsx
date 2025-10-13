@@ -1,12 +1,12 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./components/Home/Home";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const App: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-    </Routes>
+    <ThemeProvider>
+      <Home />
+    </ThemeProvider>
   );
 };
 
