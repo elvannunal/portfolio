@@ -19,7 +19,8 @@ const Home: React.FC = () => {
   }
   return (
     <div
-      className={`min-h-screen transition-colors duration-500 ${dark
+      className={`min-h-screen transition-colors duration-500 
+      ${dark
         ? "bg-gradient-to-br from-gray-900 via-purple-950 to-black"
         : "bg-gradient-to-br from-gray-50 via-purple-100 to-blue-50"
         }`}

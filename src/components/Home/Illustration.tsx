@@ -60,8 +60,36 @@ const Illustration: React.FC = () => {
           <rect x="128.39" y="240.73" width="184.29" height="95.74" fill="#e3d1e5" />
           <rect x="188.3" y="377.72" width="64.27" height="2.36" fill="#eaeaea" />
         </g>
+        <g clipPath="url(#screen)">
+          <g id="vs-code">
+            <rect x="193.2" y="240.73" width="119.55" height="95.74" fill="#565266" />
+            <rect x="193.2" y="240.73" width="119.55" height="6.45" fill="#b0baea" />
+            <ellipse cx="198.98" cy="243.95" rx="1.4" ry="1.38" fill="#e84d4d" />
+            <ellipse cx="204.19" cy="243.95" rx="1.4" ry="1.38" fill="#f2dd77" />
+            <ellipse cx="209.14" cy="243.95" rx="1.4" ry="1.38" fill="#4eb785" />
+            <g fill="#706d84">
+              <path d="M200.08 252.61c1.17-.07 1.49-.16 1.49-.37s-.33-.43-1.24-.55v-.34l1.11-.86h-1.3v-.68h2.05l.06.68-1.06.8c.83.18 1.15.51 1.15.9 0 .6-.67 1.05-2.21 1.13zM203.13 253.24l-.07-.61c1-.7 1.5-1.16 1.5-1.61s-.32-.5-1.4-.53l.07-.72c1.63 0 2.11.46 2.11 1s-.5 1.14-1.32 1.76h1.39v.67z" />
+            </g>
+          </g>
+
+          <g id="code">
+            <rect
+              className="line"
+              data-name="line"
+              x="210.54"
+              y="250.33"
+              width="70.96"
+              height="3.07"
+              fill="#a3848d"
+              opacity={0.39}
+              style={{ transformOrigin: "0px 0px", strokeDashoffset: 150.06, strokeDasharray: "0px, 999999px" }}
+            />
+
+          </g>
+        </g>
+
       </svg>
-      
+
     </motion.div>
   );
 };

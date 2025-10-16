@@ -1,4 +1,5 @@
 {
+  "home":"Ana Sayfa",
   "home_title": "Merhaba, Ben Elvan Ünal",
   "home_subtitle": "Modern ve duyarlı web deneyimleri oluşturan bir yazılım geliştirici.",
   "view_projects": "Projeleri Gör",
@@ -11,5 +12,5 @@
   "intro_title": "Tanıtım",
   "intro_text": "Frontend ve backend geliştirme deneyimine sahip, Angular, React.js, ASP.NET Core ve TypeScript konularında uzmanlaşmış çok yönlü bir Yazılım Geliştirici. Ölçeklenebilir API'ler oluşturmada, duyarlı kullanıcı arayüzleri tasarlamada ve Agile/Scrum takımlarında çalışmakta mahirdir. React Native'deki uzmanlığını genişleterek platformlar arası mobil uygulamalar sunmakta devamdır.",
   "about_title": "Hakkımda",
-  "about_text": "Kullanıcı dostu ve verimli uygulamalar oluşturma tutkusu ile yazılım geliştirmeye gönül vermiş son derece yetenekli bir yazılım geliştirici olarak, frontend geliştirmede becerilerimi geliştirdim ve çeşitli programlama dilleri ve teknolojileriyle ilgili geniş bilgiye sahibim.\n\nUzmanlık alanlarım arasında Angular, React, React Native, TypeScript, ASP.NET Web API, MVC ve PostgreSQL yer almaktadır. Bu alanlarda yılların deneyimi ile yeteneklerini kullanarak yüksek kaliteli çözümler sunabilme yeteneğine sahibim.\n\nKariyerim boyunca bağımsız olarak veya bir takımın parçası olarak çeşitli projeler üzerinde çalışmış, tutarlı bir şekilde beklentileri aşan sonuçlar çıkarmışımdır. Güçlü problem çözme becerilerim ve detaylara olan dikkatem, karmaşık teknik sorunları tanımlamamı ve çözmemi sağlayarak çalıştığım uygulamaların sorunsuz çalışmasını sağlamıştır.\n\nSürekli öğrenmeye adanmış, her zaman yeni teknolojileri keşfetmeye ve endüstri trendlerinden haberdar olmaya istekliyim. Bu bana değişen gereksinimlere uyum sağlama ve müşterilerin gelişen ihtiyaçlarını karşılayan son teknoloji çözümler sunma olanağı vermiştir."
+  "about_text": "Kullanıcı dostu ve verimli uygulamalar geliştirmeye odaklı bir frontend yazılım geliştiricisiyim. Angular, React, React Native ve TypeScript konusunda uzmanım. ASP.NET Web API, MVC ve PostgreSQL ile projeler geliştirdim. Karmaşık sorunları çözmekten keyif alırım, sürekli öğrenir ve ekiplerle işbirliği içinde yüksek kaliteli çözümler sunarım."
 }
