@@ -11,11 +11,10 @@ const About: React.FC = () => {
   return (
     <section
       id="about"
-      className={`min-h-screen flex flex-col md:flex-row justify-center items-center px-6 md:px-16 lg:px-24 transition-all duration-700 ${
-        dark
+      className={`min-h-screen flex flex-col md:flex-row justify-center items-center px-6 md:px-16 lg:px-24 transition-all duration-700 ${dark
           ? "bg-gradient-to-br from-gray-900 via-purple-900/90 to-black"
           : "bg-gradient-to-br from-purple-200 via-pink-200/70 to-blue-100"
-      }`}
+        }`}
     >
 
       <motion.div
@@ -26,10 +25,12 @@ const About: React.FC = () => {
         transition={{ duration: 1, ease: "easeOut" }}
       >
         <div className="pl-4 md:pl-8">
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 text-center md:text-left tracking-tight text-indigo-300">
+          <h2 className={`text-3xl md:text-5xl font-extrabold mb-6 text-center md:text-left tracking-tight ${dark? "text-gray-300": "text-gray-700"}`}>
             {t("about_title")}
           </h2>
-          <p className="text-lg md:text-xl leading-relaxed text-center md:text-left text-gray-700 dark:text-gray-300">
+
+          <p className={`text-lg leading-relaxed mb-8 ${dark ? "text-gray-300" : "text-gray-700"
+            }`}>
             {t("about_text")}
           </p>
         </div>
