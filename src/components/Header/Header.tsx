@@ -43,7 +43,7 @@ const Header: React.FC = () => {
       <div className="flex items-center gap-6 md:gap-8 lg:gap-10">
         {/* Navigation Links */}
         <nav className="hidden xl:flex items-center gap-8">
-          {["home", "about", "projects", "contact"].map((item) => (
+          {["home", "about", "skills", "contact"].map((item) => (
             <motion.div
               key={item}
               whileHover={{ scale: 1.05, color: dark ? "#22d3ee" : "#9333ea" }}

@@ -12,5 +12,49 @@
     "intro_title" : "Introduction",
     "intro_text": "Versatile Software Developer with experience in frontend and backend development, specializing in Angular, React.js, ASP.NET Core, and TypeScript. Skilled in building scalable APIs, creating responsive UIs, and working in Agile/Scrum teams. Currently expanding expertise in React Native to deliver cross-platform mobile applications.",
     "about_title": "About Me",
-    "about_text": "I am a passionate software developer specialized in frontend technologies, including Angular, React, React Native, and TypeScript. With experience in ASP.NET Web API, MVC, and PostgreSQL, I create efficient, user-friendly applications. I thrive on solving complex problems, continuously learning, and collaborating with teams to deliver high-quality solutions."
+    "about_text": "I am a passionate software developer specialized in frontend technologies, including Angular, React, React Native, and TypeScript. With experience in ASP.NET Web API, MVC, and PostgreSQL, I create efficient, user-friendly applications. I thrive on solving complex problems, continuously learning, and collaborating with teams to deliver high-quality solutions.",
+
+  "experience_title": "Work Experience",
+  "experience_subtitle": "My professional journey in software development",
+  "skills_title": "Skills & Technologies",
+  "skills_subtitle": "Technologies and tools I work with",
+  
+  "job1_title": "Frontend Developer",
+  "job1_period": "March 2024 - July 2025",
+  "job1_location": "Remote - Germany",
+  "job1_desc1": "Developed responsive user interfaces for enterprise ERP systems using Angular, TypeScript, HTML, CSS, DevExtreme, and Bootstrap",
+  "job1_desc2": "Worked with ASP.NET Core Web API and microservices architecture, ensuring seamless integration and efficient data flow",
+  "job1_desc3": "Applied SOLID principles and improved application performance with optimized queries and clean code practices",
+  "job1_desc4": "Improved project delivery speed by reducing feedback loop time from 4 days to 1 day through effective communication",
+  "job1_desc5": "Collaborated with cross-functional teams in Agile environment to deliver features on time",
+  
+  "job2_title": "Full-Stack Developer",
+  "job2_period": "July 2023 - October 2023",
+  "job2_location": "Antalya, Turkey",
+  "job2_desc1": "Developed full-stack web applications using ASP.NET Core MVC and Angular with modern architecture patterns",
+  "job2_desc2": "Designed and implemented RESTful APIs with scalable backend architectures and database integration",
+  "job2_desc3": "Built responsive and dynamic user interfaces following best practices and modern web standards",
+  "job2_desc4": "Applied SOLID principles and design patterns to create maintainable and scalable code",
+  "job2_desc5": "Participated in code reviews and collaborated with team members to ensure code quality",
+  
+  "job3_title": "Frontend Developer",
+  "job3_period": "August 2022 - April 2023",
+  "job3_location": "Antalya, Turkey",
+  "job3_desc1": "Built responsive and dynamic user interfaces with Angular, TypeScript, HTML, and CSS",
+  "job3_desc2": "Integrated RESTful APIs to ensure efficient data flow between frontend and backend systems",
+  "job3_desc3": "Developed reusable components and maintained consistent design systems across applications",
+  "job3_desc4": "Participated in Agile team meetings, problem-solving sessions, and sprint planning",
+  "job3_desc5": "Followed modern web development trends and best practices to enhance user experience",
+  
+  "frontend_category": "Frontend Technologies",
+  "backend_category": "Backend Technologies",
+  "tools_category": "Tools & Workflow",
+  
+  "frontend_skills": "React.js, React Native, Angular, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Styled Components, Bootstrap, DevExtreme",
+  "backend_skills": "ASP.NET Core, ASP.NET Core MVC, RESTful APIs, PostgreSQL, Microservices, Entity Framework",
+  "tools_skills": "Git, GitHub, Docker, Azure, Agile/Scrum, Responsive Design, Clean Code, Performance Optimization, AI-assisted coding (Cursor, GitHub Copilot)",
+  
+  "cta_title": "Let's Work Together",
+  "cta_description": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.",
+  "cta_button": "Get In Touch"
 }

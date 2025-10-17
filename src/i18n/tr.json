@@ -13,4 +13,48 @@
   "intro_text": "Frontend ve backend geliştirme deneyimine sahip, Angular, React.js, ASP.NET Core ve TypeScript konularında uzmanlaşmış çok yönlü bir Yazılım Geliştirici. Ölçeklenebilir API'ler oluşturmada, duyarlı kullanıcı arayüzleri tasarlamada ve Agile/Scrum takımlarında çalışmakta mahirdir. React Native'deki uzmanlığını genişleterek platformlar arası mobil uygulamalar sunmakta devamdır.",
   "about_title": "Hakkımda",
   "about_text": "Kullanıcı dostu ve verimli uygulamalar geliştirmeye odaklı bir frontend yazılım geliştiricisiyim. Angular, React, React Native ve TypeScript konusunda uzmanım. ASP.NET Web API, MVC ve PostgreSQL ile projeler geliştirdim. Karmaşık sorunları çözmekten keyif alırım, sürekli öğrenir ve ekiplerle işbirliği içinde yüksek kaliteli çözümler sunarım."
+,
+  "experience_title": "İş Deneyimi",
+  "experience_subtitle": "Yazılım geliştirme alanındaki profesyonel yolculuğum",
+  "skills_title": "Yetenekler & Teknolojiler",
+  "skills_subtitle": "Çalıştığım teknolojiler ve araçlar",
+  
+  "job1_title": "Frontend Developer",
+  "job1_period": "Mart 2024 - Temmuz 2025",
+  "job1_location": "Uzaktan - Almanya",
+  "job1_desc1": "Angular, TypeScript, HTML, CSS, DevExtreme ve Bootstrap kullanarak kurumsal ERP sistemleri için duyarlı kullanıcı arayüzleri geliştirdim",
+  "job1_desc2": "ASP.NET Core Web API ve mikroservis mimarisi ile çalışarak sorunsuz entegrasyon ve verimli veri akışı sağladım",
+  "job1_desc3": "SOLID prensiplerini uygulayarak ve optimize edilmiş sorgular ve temiz kod uygulamaları ile uygulama performansını iyileştirdim",
+  "job1_desc4": "Etkili iletişim sayesinde geri bildirim döngüsü süresini 4 günden 1 güne düşürerek proje teslim hızını artırdım",
+  "job1_desc5": "Agile ortamında çapraz fonksiyonel ekiplerle işbirliği yaparak özellikleri zamanında teslim ettim",
+  
+  "job2_title": "Full-Stack Developer",
+  "job2_period": "Temmuz 2023 - Ekim 2023",
+  "job2_location": "Antalya, Türkiye",
+  "job2_desc1": "ASP.NET Core MVC ve Angular kullanarak modern mimari desenlerle full-stack web uygulamaları geliştirdim",
+  "job2_desc2": "Ölçeklenebilir backend mimarileri ve veritabanı entegrasyonu ile RESTful API'ler tasarladım ve uyguladım",
+  "job2_desc3": "En iyi uygulamaları ve modern web standartlarını takip ederek duyarlı ve dinamik kullanıcı arayüzleri oluşturdum",
+  "job2_desc4": "Sürdürülebilir ve ölçeklenebilir kod oluşturmak için SOLID prensiplerini ve tasarım desenlerini uyguladım",
+  "job2_desc5": "Kod incelemelerine katıldım ve kod kalitesini sağlamak için ekip üyeleriyle işbirliği yaptım",
+  
+  "job3_title": "Frontend Developer",
+  "job3_period": "Ağustos 2022 - Nisan 2023",
+  "job3_location": "Antalya, Türkiye",
+  "job3_desc1": "Angular, TypeScript, HTML ve CSS ile duyarlı ve dinamik kullanıcı arayüzleri oluşturdum",
+  "job3_desc2": "Frontend ve backend sistemleri arasında verimli veri akışını sağlamak için RESTful API'leri entegre ettim",
+  "job3_desc3": "Yeniden kullanılabilir bileşenler geliştirdim ve uygulamalar genelinde tutarlı tasarım sistemleri sürdürdüm",
+  "job3_desc4": "Agile ekip toplantılarına, problem çözme oturumlarına ve sprint planlamalarına katıldım",
+  "job3_desc5": "Kullanıcı deneyimini geliştirmek için modern web geliştirme trendlerini ve en iyi uygulamaları takip ettim",
+  
+  "frontend_category": "Frontend Teknolojileri",
+  "backend_category": "Backend Teknolojileri",
+  "tools_category": "Araçlar & İş Akışı",
+  
+  "frontend_skills": "React.js, React Native, Angular, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Styled Components, Bootstrap, DevExtreme",
+  "backend_skills": "ASP.NET Core, ASP.NET Core MVC, RESTful APIs, PostgreSQL, Microservices, Entity Framework",
+  "tools_skills": "Git, GitHub, Docker, Azure, Agile/Scrum, Responsive Design, Clean Code, Performance Optimization, AI destekli kodlama (Cursor, GitHub Copilot)",
+  
+  "cta_title": "Birlikte Çalışalım",
+  "cta_description": "Yeni projeler, yaratıcı fikirler tartışmaya veya vizyonunuzun bir parçası olmaya her zaman açığım.",
+  "cta_button": "İletişime Geçin"
 }

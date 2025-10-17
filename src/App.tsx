@@ -3,9 +3,9 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import About from "./pages/About";
-import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import DotNavigation from "./components/DotNavigation";
+import Skills from "./pages/Skills";
 
 const App: React.FC = () => {
   return (
@@ -18,14 +18,14 @@ const App: React.FC = () => {
         <section id="about">
           <About />
         </section>
-        <section id="projects">
-          <Projects />
+        <section id="skills">
+          <Skills/>
         </section>
         <section id="contact">
           <Contact />
         </section>
       </main>
-      <DotNavigation sections={["home", "about", "projects", "contact"]} />
+      <DotNavigation sections={["home", "about", "skills", "contact"]} />
     </ThemeProvider>
 
   );
