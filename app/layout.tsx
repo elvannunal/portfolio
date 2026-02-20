@@ -3,10 +3,13 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
+// Optimize font loading - only load required subsets
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -45,6 +48,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Preconnect to font CDN
+  other: {
+    "preconnect": "https://fonts.gstatic.com",
+  },
 };
 
 export default function RootLayout({
@@ -54,7 +61,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans bg-background text-foreground antialiased transition-colors duration-300`}>
+      <head>
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className={`${inter.variable} font-sans bg-background text-foreground antialiased`}>
         <Providers>
           {children}
         </Providers>

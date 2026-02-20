@@ -1,10 +1,27 @@
+import dynamic from 'next/dynamic';
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Contact from "@/components/Contact";
-import DotNavigation from "@/components/DotNavigation";
-import Footer from "@/components/Footer";
+
+// Lazy load below-the-fold components for faster initial render
+const About = dynamic(() => import("@/components/About"), {
+  loading: () => <div className="min-h-screen" />,
+});
+
+const Skills = dynamic(() => import("@/components/Skills"), {
+  loading: () => <div className="min-h-screen" />,
+});
+
+const Contact = dynamic(() => import("@/components/Contact"), {
+  loading: () => <div className="min-h-screen" />,
+});
+
+const Footer = dynamic(() => import("@/components/Footer"), {
+  loading: () => <div className="h-32" />,
+});
+
+const DotNavigation = dynamic(() => import("@/components/DotNavigation"), {
+  loading: () => null,
+});
 
 export default function Home() {
   return (
