@@ -1,6 +1,6 @@
 export const socialLinks = {
-  github: "https://github.com/elvanunal",
-  linkedin: "https://linkedin.com/in/elvan-ünal-1a6a64232",
-  email: "mailto:elvan.unall@outlook.com"
+  github: "https://github.com/elvannunal",
+  linkedin: "https://www.linkedin.com/in/elvan-%C3%BCnal-b88a33225/",
+  email: "mailto:elvanunalll@gmail.com"
 };
 
