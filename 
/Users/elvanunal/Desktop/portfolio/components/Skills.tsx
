@@ -1,0 +1,322 @@
+
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useTheme } from "@/lib/ThemeContext";
+import { useLanguage } from "@/lib/LanguageContext";
+
+interface Skill {
+  name: string;
+  category: "frontend" | "backend" | "devops" | "architecture" | "ai";
+}
+
+const skills: Skill[] = [
+  { name: "React.js", category: "frontend" },
+  { name: "React Native", category: "frontend" },
+  { name: "Angular", category: "frontend" },
+  { name: "TypeScript", category: "frontend" },
+  { name: "JavaScript", category: "frontend" },
+  { name: "HTML/CSS", category: "frontend" },
+  { name: "Tailwind CSS", category: "frontend" },
+  { name: "ASP.NET Core", category: "backend" },
+  { name: "RESTful APIs", category: "backend" },
+  { name: "PostgreSQL", category: "backend" },
+  { name: "Microservices", category: "backend" },
+  { name: "Docker", category: "devops" },
+  { name: "Git", category: "devops" },
+  { name: "GitHub", category: "devops" },
+  { name: "Azure", category: "devops" },
+  { name: "Agile/Scrum", category: "architecture" },
+  { name: "Clean Code", category: "architecture" },
+  { name: "Performance", category: "architecture" },
+  { name: "Responsive Design", category: "architecture" },
+  { name: "Cursor", category: "ai" },
+  { name: "GitHub Copilot", category: "ai" },
+];
+
+const categoryConfig: Record<string, { label: string; color: string }> = {
+  frontend: { label: "Frontend", color: "from-cyan-400 to-blue-500" },
+  backend: { label: "Backend", color: "from-purple-400 to-pink-500" },
+  devops: { label: "DevOps", color: "from-emerald-400 to-teal-500" },
+  architecture: { label: "Architecture", color: "from-amber-400 to-orange-500" },
+  ai: { label: "AI", color: "from-violet-400 to-indigo-500" },
+};
+
+function SkillNode({ 
+  skill, 
+  index, 
+  total,
+  radius,
+  isDark,
+  onHover
+}: { 
+  skill: Skill; 
+  index: number; 
+  total: number;
+  radius: number;
+  isDark: boolean;
+  onHover: (skill: Skill | null) => void;
+}) {
+  const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
+  const x = Math.cos(angle) * radius;
+  const y = Math.sin(angle) * radius;
+  const config = categoryConfig[skill.category];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ 
+        opacity: 1, 
+        scale: 1,
+        x: 0,
+        y: 0
+      }}
+      transition={{ delay: 0.3 + index * 0.05, duration: 0.5 }}
+      className="absolute left-1/2 top-1/2"
+      style={{
+        transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
+      }}
+      onMouseEnter={() => onHover(skill)}
+      onMouseLeave={() => onHover(null)}
+    >
+      <motion.div
+        whileHover={{ scale: 1.15 }}
+        className={`
+          relative px-3 py-1.5 rounded-full text-xs font-medium
+          border backdrop-blur-sm cursor-pointer whitespace-nowrap
+          transition-all duration-200 z-10
+          ${isDark 
+            ? "bg-zinc-900/90 text-zinc-200 border-zinc-700/50 hover:border-purple-500" 
+            : "bg-white/90 text-zinc-700 border-zinc-200 hover:border-purple-400"
+          }
+        `}
+      >
+        <div className={`absolute inset-0 rounded-full bg-gradient-to-r ${config.color} opacity-0 hover:opacity-10 transition-opacity`} />
+        <span className="relative z-10 flex items-center gap-1.5">
+          <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${config.color}`} />
+          {skill.name}
+        </span>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function CircularLayout({ isDark, hoveredSkill, setHoveredSkill }: { 
+  isDark: boolean; 
+  hoveredSkill: Skill | null;
+  setHoveredSkill: (skill: Skill | null) => void;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 600, height: 600 });
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      const width = Math.min(window.innerWidth - 100, 700);
+      setDimensions({ width, height: width });
+    };
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  const radius = Math.min(dimensions.width, dimensions.height) / 2 - 60;
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative mx-auto"
+      style={{ width: dimensions.width, height: dimensions.height }}
+    >
+      {/* Center glow */}
+      <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full ${isDark ? "bg-purple-500/10" : "bg-purple-300/20"} blur-2xl`} />
+      
+      {/* Orbit ring */}
+      <div 
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border ${isDark ? "border-zinc-700/30" : "border-zinc-200/40"}`}
+        style={{ width: radius * 2, height: radius * 2 }}
+      />
+
+      {/* Skills positioned in circle */}
+      {skills.map((skill, index) => (
+        <SkillNode
+          key={skill.name}
+          skill={skill}
+          index={index}
+          total={skills.length}
+          radius={radius}
+          isDark={isDark}
+          onHover={setHoveredSkill}
+        />
+      ))}
+
+      {/* Center label when hovering */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: hoveredSkill ? 1 : 0 }}
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none z-20`}
+      >
+        <div className={`
+          px-6 py-3 rounded-2xl backdrop-blur-md border
+          ${isDark 
+            ? "bg-zinc-900/90 border-zinc-700/50" 
+            : "bg-white/90 border-zinc-200"
+          }
+        `}>
+          <p className={`text-lg font-bold ${isDark ? "text-white" : "text-zinc-900"}`}>
+            {hoveredSkill?.name}
+          </p>
+          <p className={`text-sm ${isDark ? "text-purple-400" : "text-purple-600"}`}>
+            {categoryConfig[hoveredSkill?.category || "frontend"].label}
+          </p>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+function GridLayout({ isDark, hoveredSkill, setHoveredSkill }: { 
+  isDark: boolean; 
+  hoveredSkill: Skill | null;
+  setHoveredSkill: (skill: Skill | null) => void;
+}) {
+  const categories = Object.entries(categoryConfig);
+
+  return (
+    <div className="flex flex-col gap-6 px-4">
+      {categories.map(([key, config]) => {
+        const catSkills = skills.filter(s => s.category === key);
+        return (
+          <div key={key} className="flex flex-col items-center gap-2">
+            <div className="flex items-center gap-2">
+              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${config.color}`} />
+              <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? "text-zinc-400" : "text-zinc-600"}`}>
+                {config.label}
+              </span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-2">
+              {catSkills.map((skill, idx) => (
+                <motion.button
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.03 }}
+                  whileHover={{ scale: 1.05 }}
+                  onMouseEnter={() => setHoveredSkill(skill)}
+                  onMouseLeave={() => setHoveredSkill(null)}
+                  className={`
+                    relative px-3 py-1.5 rounded-full text-xs font-medium
+                    border backdrop-blur-sm transition-all duration-200
+                    ${isDark 
+                      ? "bg-zinc-900/80 text-zinc-200 border-zinc-700/50 hover:border-purple-500" 
+                      : "bg-white/80 text-zinc-700 border-zinc-200 hover:border-purple-400"
+                    }
+                  `}
+                >
+                  <span className="flex items-center gap-1.5">
+                    <span className={`w-1 h-1 rounded-full bg-gradient-to-r ${config.color}`} />
+                    {skill.name}
+                  </span>
+                </motion.button>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export default function Skills() {
+  const { theme } = useTheme();
+  const { language } = useLanguage();
+  const isDark = theme === "dark";
+  const [viewport, setViewport] = useState<"desktop" | "tablet" | "mobile">("desktop");
+  const [hoveredSkill, setHoveredSkill] = useState<Skill | null>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 768) setViewport("mobile");
+      else if (width < 1280) setViewport("tablet");
+      else setViewport("desktop");
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return (
+    <section 
+      id="skills" 
+      ref={ref}
+      className={`min-h-screen py-20 flex items-center justify-center relative overflow-hidden ${isDark ? "bg-zinc-950" : "bg-zinc-50"}`}
+    >
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className={`absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full blur-[120px] ${isDark ? "bg-purple-600/10" : "bg-purple-300/20"}`} />
+        <div className={`absolute bottom-1/4 -right-32 w-[500px] h-[500px] rounded-full blur-[120px] ${isDark ? "bg-cyan-600/10" : "bg-cyan-300/20"}`} />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 w-full">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-4 ${isDark ? "bg-purple-500/10 text-purple-400 border border-purple-500/20" : "bg-purple-100 text-purple-600 border border-purple-200"}`}>
+            {language === "tr" ? "Uzmanlık Alanlarım" : "Expertise"}
+          </span>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 ${isDark ? "text-white" : "text-zinc-900"}`}>
+            {language === "tr" ? "Yeteneklerim" : "Skills"}
+          </h2>
+          <p className={`text-lg max-w-2xl mx-auto ${isDark ? "text-zinc-400" : "text-zinc-600"}`}>
+            {language === "tr" 
+              ? "Kullandığım teknolojiler ve sürekli geliştiğim alanlar" 
+              : "Technologies I use and areas I continuously improve"}
+          </p>
+        </motion.div>
+
+        {/* Layout based on viewport */}
+        {viewport === "desktop" && (
+          <CircularLayout 
+            isDark={isDark} 
+            hoveredSkill={hoveredSkill} 
+            setHoveredSkill={setHoveredSkill}
+          />
+        )}
+        
+        {(viewport === "tablet" || viewport === "mobile") && (
+          <GridLayout 
+            isDark={isDark} 
+            hoveredSkill={hoveredSkill} 
+            setHoveredSkill={setHoveredSkill}
+          />
+        )}
+
+        {/* Legend */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap justify-center gap-3 mt-10"
+        >
+          {Object.entries(categoryConfig).map(([key, config]) => (
+            <div 
+              key={key} 
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs ${isDark ? "bg-zinc-800/50 text-zinc-400 border border-zinc-700/30" : "bg-zinc-100 text-zinc-600 border border-zinc-200"}`}
+            >
+              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${config.color}`} />
+              {config.label}
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
