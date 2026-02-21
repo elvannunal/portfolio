@@ -4,7 +4,21 @@ import { Metadata } from 'next';
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 
-// Dynamic imports with proper loading states and SSR disabled for client components
+// Simple loading placeholder - MUST be defined before dynamic imports
+function SectionLoader() {
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
+
+// Dynamic imports with proper loading states - SectionLoader must be defined above
+const Projects = dynamic(() => import("@/components/Projects"), {
+  loading: () => <SectionLoader />,
+  ssr: true,
+});
+
 const About = dynamic(() => import("@/components/About"), {
   loading: () => <SectionLoader />,
   ssr: true,
@@ -27,17 +41,7 @@ const Footer = dynamic(() => import("@/components/Footer"), {
 
 const DotNavigation = dynamic(() => import("@/components/DotNavigation"), {
   loading: () => null,
-  ssr: false,
 });
-
-// Simple loading placeholder
-function SectionLoader() {
-  return (
-    <div className="min-h-[60vh] flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
-    </div>
-  );
-}
 
 export const metadata: Metadata = {
   title: "Elvan Ünal | Ölçeklenebilir ve Performans Odaklı Yazılım Geliştirici",
@@ -56,6 +60,7 @@ export default function Home() {
       <Navbar />
       <DotNavigation />
       <Hero />
+      <Projects />
       <About />
       <Skills />
       <Contact />

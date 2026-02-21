@@ -11,6 +11,7 @@ import ThemeToggle from "./ThemeToggle";
 
 // Memoized navigation links
 const navLinks = [
+  { href: "#projects", labelKey: "projects" as const },
   { href: "#about", labelKey: "about" as const },
   { href: "#skills", labelKey: "skills" as const },
   { href: "#contact", labelKey: "contact" as const },
@@ -70,7 +71,7 @@ export default function Navbar() {
           setIsScrolled(latest > 50);
           
           // Track active section
-          const sections = ["home", "about", "skills", "contact"];
+          const sections = ["home", "projects", "about", "skills", "contact"];
           for (const section of sections) {
             const element = document.getElementById(section);
             if (element) {

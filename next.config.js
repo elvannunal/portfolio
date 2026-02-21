@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable SWC minification for faster builds and smaller bundles
-  swcMinify: true,
+  // Turbopack root - fixes workspace detection issue
+  turbopack: {
+    root: __dirname,
+  },
   
   // Image optimization - optimized for mobile
   images: {

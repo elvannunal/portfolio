@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  manifest: "/manifest.json",
 };
 
 // Mobile viewport settings
