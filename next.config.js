@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Turbopack root - fixes workspace detection issue
-  turbopack: {
-    root: __dirname,
-  },
-  
   // Image optimization - optimized for mobile
   images: {
     remotePatterns: [
