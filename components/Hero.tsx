@@ -1,7 +1,7 @@
 
 "use client";
 
-import { memo, useCallback, useMemo } from "react";
+import { memo, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/lib/LanguageContext";
 import { useTheme } from "@/lib/ThemeContext";
@@ -15,14 +15,44 @@ const scrollToSection = (href: string) => {
   }
 };
 
-// Simplified Typewriter - only runs on desktop
-function Typewriter({ texts }: { texts: string[] }) {
+// Smooth Marquee Component - lightweight and performant
+const MarqueeText = memo(function MarqueeText({ 
+  texts, 
+  isDark 
+}: { 
+  texts: string[]; 
+  isDark: boolean;
+}) {
+  const combinedText = texts.join("  •  ");
+  
   return (
-    <span className="gradient-text-vibrant">
-      {texts[0]}
-    </span>
+    <div className="overflow-hidden relative w-full">
+      <motion.div
+        className="flex whitespace-nowrap"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 20,
+            ease: "linear",
+          },
+        }}
+      >
+        {/* First set */}
+        <span className="gradient-text-vibrant text-lg md:text-xl lg:text-2xl font-semibold px-4">
+          {combinedText}
+        </span>
+        {/* Duplicate for seamless loop */}
+        <span className="gradient-text-vibrant text-lg md:text-xl lg:text-2xl font-semibold px-4">
+          {combinedText}
+        </span>
+      </motion.div>
+    </div>
   );
-}
+});
+
+MarqueeText.displayName = 'MarqueeText';
 
 // Particles - reduced for mobile
 const Particle = memo(function Particle({ 
@@ -56,21 +86,21 @@ const Particle = memo(function Particle({
   );
 });
 
-// Memoized Particles component with reduced count for mobile
-const Particles = memo(function Particles() {
-  // Reduced particle count for mobile
+// Memoized Particles component
+const Particles = memo(function Particles({ isMobile = false }: { isMobile?: boolean }) {
+  const count = isMobile ? 6 : 15;
   const particles = useMemo(() => 
-    Array.from({ length: 8 }, (_, i) => ({
+    Array.from({ length: count }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 2 + 1,
       delay: Math.random() * 3,
-    })), []
+    })), [count]
   );
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none md:hidden">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {particles.map((p) => (
         <Particle key={p.id} x={p.x} y={p.y} size={p.size} delay={p.delay} />
       ))}
@@ -78,28 +108,9 @@ const Particles = memo(function Particles() {
   );
 });
 
-// Desktop-only particles
-const DesktopParticles = memo(function DesktopParticles() {
-  const particles = useMemo(() => 
-    Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      delay: Math.random() * 5,
-    })), []
-  );
+Particles.displayName = 'Particles';
 
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
-      {particles.map((p) => (
-        <Particle key={p.id} x={p.x} y={p.y} size={p.size} delay={p.delay} />
-      ))}
-    </div>
-  );
-});
-
-// Code card - desktop only to save mobile resources
+// Code card - desktop only
 const CodeCard = memo(function CodeCard({ isDark }: { isDark: boolean }) {
   const codeLines = [
     { indent: 0, code: "const developer = {", color: "text-purple-400" },
@@ -148,35 +159,35 @@ const CodeCard = memo(function CodeCard({ isDark }: { isDark: boolean }) {
   );
 });
 
+CodeCard.displayName = 'CodeCard';
+
 // Main Hero Component - Memoized
 const Hero = memo(function Hero() {
   const { language, t } = useLanguage();
   const { theme } = useTheme();
   const isDark = theme === "dark";
   
-  const containerRef = useMemo(() => ({ current: null }), []);
-  
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 300], [0, 50]);
   const opacity = useTransform(scrollY, [0, 200], [1, 0]);
 
-  const titleTexts = useMemo(() => language === "tr" 
-    ? ["Ölçeklenebilir Yazılım", "Modern Web Deneyimleri"]
-    : ["Scalable Software", "Modern Web Experiences"], 
+  const marqueeTexts = useMemo(() => language === "tr" 
+    ? ["Ölçeklenebilir Yazılım", "Modern Web Deneyimleri", "Clean Code", "Performans Odaklı"]
+    : ["Scalable Software", "Modern Web Experiences", "Clean Code", "Performance First"], 
   [language]);
 
-  const handleCtaClick = useCallback(() => {
+  const handleCtaClick = () => {
     scrollToSection("#contact");
-  }, []);
+  };
 
   return (
     <section 
       id="home" 
       className="min-h-screen flex items-center justify-center relative overflow-hidden section-hero"
     >
-      {/* Background Effects - Simplified for mobile */}
+      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Grid - lighter for mobile */}
+        {/* Grid */}
         <div 
           className={`absolute inset-0 opacity-[0.02]`}
           style={{
@@ -187,7 +198,7 @@ const Hero = memo(function Hero() {
           }}
         />
         
-        {/* Reduced gradient orbs for mobile */}
+        {/* Gradient orbs */}
         <div className={`absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full blur-[100px] md:blur-[150px] ${
           isDark ? "bg-purple-600/15" : "bg-purple-300/15"
         }`} />
@@ -197,8 +208,7 @@ const Hero = memo(function Hero() {
         }`} />
         
         {/* Particles */}
-        <Particles />
-        <DesktopParticles />
+        <Particles isMobile={true} />
       </div>
 
       {/* Content */}
@@ -229,7 +239,7 @@ const Hero = memo(function Hero() {
               </span>
             </motion.div>
 
-            {/* Headline - Smaller on mobile */}
+            {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -242,14 +252,14 @@ const Hero = memo(function Hero() {
               <span className="gradient-text-vibrant">Elvan</span>
             </motion.h1>
 
-            {/* Subtitle */}
+            {/* Marquee Text */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.3 }}
-              className="text-lg md:text-xl lg:text-2xl font-semibold mb-4 md:mb-6"
+              className="mb-4 md:mb-6"
             >
-              <Typewriter texts={titleTexts} />
+              <MarqueeText texts={marqueeTexts} isDark={isDark} />
             </motion.div>
 
             {/* Description */}
@@ -364,7 +374,7 @@ const Hero = memo(function Hero() {
         </div>
       </motion.div>
 
-      {/* Scroll indicator - hidden on mobile for performance */}
+      {/* Scroll indicator - hidden on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -384,6 +394,8 @@ const Hero = memo(function Hero() {
     </section>
   );
 });
+
+Hero.displayName = 'Hero';
 
 export default Hero;
 
