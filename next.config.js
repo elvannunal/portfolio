@@ -3,7 +3,7 @@ const nextConfig = {
   // Enable SWC minification for faster builds and smaller bundles
   swcMinify: true,
   
-  // Image optimization
+  // Image optimization - optimized for mobile
   images: {
     remotePatterns: [
       {
@@ -11,11 +11,13 @@ const nextConfig = {
         hostname: '**',
       },
     ],
-    // Enable modern formats
+    // Enable modern formats - AVIF first for mobile
     formats: ['image/avif', 'image/webp'],
-    // Limit device sizes for responsive images
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Reduced sizes for mobile
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    // Minimum cache time
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
   
   // Enable compression
@@ -24,12 +26,12 @@ const nextConfig = {
   // Production optimizations
   poweredByHeader: false,
   
-  // React strict mode for better development experience (can disable for prod)
+  // React strict mode
   reactStrictMode: true,
   
   // Experimental features for better performance
   experimental: {
-    // Optimize package imports
+    // Optimize package imports for smaller bundle
     optimizePackageImports: ['framer-motion'],
   },
   

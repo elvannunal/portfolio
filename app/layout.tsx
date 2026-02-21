@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
-// Optimize font loading - only load required subsets
+// Optimize font loading - only load required subsets, use variable font
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -14,8 +15,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Elvan Ünal | Ölçeklenebilir ve Performans Odaklı Yazılım Geliştirici",
-  description:
-    "C#, .NET teknolojileri ve modern JavaScript framework'leri konusunda güçlü bir altyapıya sahip Yazılım Geliştirici. ASP.NET Core, React ve Angular ile deneyimli.",
+  description: "C#, .NET teknolojileri ve modern JavaScript framework'leri konusunda güçlü bir altyapıya sahip Yazılım Geliştirici. ASP.NET Core, React ve Angular ile deneyimli.",
   keywords: [
     "software developer",
     "full stack",
@@ -33,25 +33,28 @@ export const metadata: Metadata = {
   creator: "Elvan Ünal",
   openGraph: {
     title: "Elvan Ünal | Ölçeklenebilir ve Performans Odaklı Yazılım Geliştirici",
-    description:
-      "C#, .NET teknolojileri ve modern JavaScript framework'leri konusunda güçlü bir altyapıya sahip Yazılım Geliştirici.",
+    description: "C#, .NET teknolojileri ve modern JavaScript framework'leri konusunda güçlü bir altyapıya sahip Yazılım Geliştirici.",
     type: "website",
     locale: "tr_TR",
   },
   twitter: {
     card: "summary_large_image",
     title: "Elvan Ünal | Ölçeklenebilir ve Performans Odaklı Yazılım Geliştirici",
-    description:
-      "C#, .NET teknolojileri ve modern JavaScript framework'leri konusunda güçlü bir altyapıya sahip Yazılım Geliştirici.",
+    description: "C#, .NET teknolojileri ve modern JavaScript framework'leri konusunda güçlü bir altyapıya sahip Yazılım Geliştirici.",
   },
   robots: {
     index: true,
     follow: true,
   },
-  // Preconnect to font CDN
-  other: {
-    "preconnect": "https://fonts.gstatic.com",
-  },
+  manifest: "/manifest.json",
+};
+
+// Mobile viewport settings
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0a0a0f",
 };
 
 export default function RootLayout({
@@ -67,6 +70,9 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={`${inter.variable} font-sans bg-background text-foreground antialiased`}>
         <Providers>
