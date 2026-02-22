@@ -199,7 +199,7 @@ export const translations: Record<Language, Translations> = {
     
     contact: {
       title: "İletişim",
-      subtitle: "Bir projede birlikte çalışmak ister misiniz? İş birliği fırsatları ve projeleriniz için benimle iletişime geçebilirsiniz.",
+      subtitle: "Projeleriniz veya iş birliği için benimle iletişime geçebilirsiniz.",
       namePlaceholder: "Adınız",
       emailPlaceholder: "email@ornek.com",
       messagePlaceholder: "Mesajınız...",
