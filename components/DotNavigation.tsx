@@ -7,9 +7,9 @@ import { useTheme } from "@/lib/ThemeContext";
 
 const SECTIONS = [
   { id: "home", labelKey: "homeLabel" },
+  { id: "projects", labelKey: "projectsLabel" },
   { id: "about", labelKey: "aboutLabel" },
   { id: "skills", labelKey: "skillsLabel" },
-  { id: "projects", labelKey: "projectsLabel" },
   { id: "contact", labelKey: "contactLabel" },
 ];
 

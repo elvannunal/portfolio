@@ -49,12 +49,9 @@ const ProjectCard = memo(function ProjectCard({ project, index }: ProjectCardPro
       }`} />
 
       <div className="p-6">
-        {/* Project Image Placeholder */}
+        {/* Project Image */}
         {project.image ? (
           <div className="relative h-48 -mx-6 -mt-6 mb-6 overflow-hidden">
-            <div className={`absolute inset-0 bg-gradient-to-br ${
-              isDark ? "from-purple-600/20 to-cyan-600/20" : "from-purple-100 to-cyan-100"
-            }`} />
             <img
               src={project.image}
               alt={language === "tr" ? project.title : project.titleEn}
