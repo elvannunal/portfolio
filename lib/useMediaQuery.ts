@@ -1,0 +1,32 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
+/**
+ * Custom hook to detect if the current viewport matches a given media query
+ * Useful for performance optimizations - disable heavy animations on mobile
+ */
+export default function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    
+    // Set initial value
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+
+    // Listen for changes
+    const listener = (e: MediaQueryListEvent) => {
+      setMatches(e.matches);
+    };
+
+    media.addEventListener("change", listener);
+    
+    return () => media.removeEventListener("change", listener);
+  }, [matches, query]);
+
+  return matches;
+}
+

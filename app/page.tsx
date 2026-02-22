@@ -1,6 +1,7 @@
 
+"use client";
+
 import dynamic from 'next/dynamic';
-import { Metadata } from 'next';
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 
@@ -13,46 +14,37 @@ function SectionLoader() {
   );
 }
 
-// Dynamic imports with proper loading states - SectionLoader must be defined above
+// Dynamic imports with SSR disabled for mobile performance
+// These components are heavy and don't need SSR - they load client-side only
 const Projects = dynamic(() => import("@/components/Projects"), {
   loading: () => <SectionLoader />,
-  ssr: true,
+  ssr: false, // Disabled for faster mobile loading
 });
 
 const About = dynamic(() => import("@/components/About"), {
   loading: () => <SectionLoader />,
-  ssr: true,
+  ssr: false, // Disabled for faster mobile loading
 });
 
 const Skills = dynamic(() => import("@/components/Skills"), {
   loading: () => <SectionLoader />,
-  ssr: true,
+  ssr: false, // Disabled for faster mobile loading - complex radial layout
 });
 
 const Contact = dynamic(() => import("@/components/Contact"), {
   loading: () => <SectionLoader />,
-  ssr: true,
+  ssr: false, // Disabled for faster mobile loading
 });
 
 const Footer = dynamic(() => import("@/components/Footer"), {
   loading: () => <div className="h-24" />,
-  ssr: true,
+  ssr: false, // Disabled for faster mobile loading
 });
 
 const DotNavigation = dynamic(() => import("@/components/DotNavigation"), {
   loading: () => null,
+  ssr: false, // Disabled - not needed on mobile
 });
-
-export const metadata: Metadata = {
-  title: "Elvan Ünal | Ölçeklenebilir ve Performans Odaklı Yazılım Geliştirici",
-  description: "C#, .NET teknolojileri ve modern JavaScript framework'leri konusunda güçlü bir altyapıya sahip Yazılım Geliştirici.",
-  openGraph: {
-    title: "Elvan Ünal | Ölçeklenebilir ve Performans Odaklı Yazılım Geliştirici",
-    description: "Modern web uygulamaları ve ölçeklenebilir çözümler.",
-    type: "website",
-    locale: "tr_TR",
-  },
-};
 
 export default function Home() {
   return (

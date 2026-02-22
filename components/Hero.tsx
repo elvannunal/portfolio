@@ -54,15 +54,15 @@ function Typewriter({ texts }: { texts: string[] }) {
   );
 }
 
-// Floating particles background
+// Floating particles background - lightweight version
 function Particles() {
-  const particles = Array.from({ length: 25 }, (_, i) => ({
+  const particles = Array.from({ length: 12 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    duration: Math.random() * 20 + 15,
-    delay: Math.random() * 5,
+    size: Math.random() * 2 + 1,
+    duration: Math.random() * 15 + 10,
+    delay: Math.random() * 3,
   }));
 
   return (
@@ -78,9 +78,8 @@ function Particles() {
             height: p.size,
           }}
           animate={{
-            y: [0, -80, 0],
-            x: [0, Math.random() * 30 - 15, 0],
-            opacity: [0.2, 0.5, 0.2],
+            y: [0, -40, 0],
+            opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
             duration: p.duration,
@@ -161,13 +160,13 @@ export default function Hero() {
   const isDark = theme === "dark";
   const containerRef = useRef<HTMLDivElement>(null);
   
+  // Simplified scroll animation for better mobile performance
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
   
-  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
   const titleTexts = language === "tr" 
     ? ["Ölçeklenebilir Yazılım", "Modern Web Deneyimleri", "Clean Code"]
@@ -179,56 +178,24 @@ export default function Hero() {
       ref={containerRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden section-hero"
     >
-      {/* Background Effects */}
+      {/* Background Effects - Simplified for mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Animated grid */}
-        <div 
-          className={`absolute inset-0 ${
-            isDark 
-              ? "opacity-[0.03]" 
-              : "opacity-[0.04]"
-          }`}
-          style={{
-            backgroundImage: isDark 
-              ? `linear-gradient(rgba(168, 85, 247, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(168, 85, 247, 1) 1px, transparent 1px)`
-              : `linear-gradient(rgba(0, 0, 0, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-            animation: 'gridMove 20s linear infinite',
-          }}
-        />
+        {/* Static gradient background instead of animated grid */}
+        <div className={`absolute inset-0 ${
+          isDark 
+            ? "bg-gradient-to-br from-zinc-950 via-purple-950/20 to-zinc-900" 
+            : "bg-gradient-to-br from-zinc-50 via-purple-50 to-zinc-100"
+        }`} />
         
-        {/* Gradient orbs */}
-        <motion.div 
-          animate={{
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full blur-[150px] ${
-            isDark ? "bg-purple-600/20" : "bg-purple-300/20"
-          }`} 
-        />
-        <motion.div 
-          animate={{
-            x: [0, -30, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full blur-[120px] ${
-            isDark ? "bg-blue-600/15" : "bg-blue-300/15"
-          }`} 
-        />
-        <motion.div 
-          animate={{
-            scale: [1, 1.2, 1],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[180px] ${
-            isDark ? "bg-pink-600/10" : "bg-pink-300/10"
-          }`} 
-        />
+        {/* Simplified gradient orbs - smaller and fewer */}
+        <div className={`absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl ${
+          isDark ? "bg-purple-600/15" : "bg-purple-300/15"
+        }`} />
+        <div className={`absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full blur-3xl ${
+          isDark ? "bg-blue-600/10" : "bg-blue-300/10"
+        }`} />
         
-        {/* Particles */}
+        {/* Particles - lightweight */}
         <Particles />
       </div>
 
