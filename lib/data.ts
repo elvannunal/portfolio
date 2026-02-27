@@ -8,6 +8,7 @@ export interface Project {
   image?: string;
   github?: string;
   live?: string;
+  live2?: string;
 }
 
 export const projects: Project[] = [
@@ -40,6 +41,8 @@ export const projects: Project[] = [
     tags: ["Angular", "HTML", "Bootstrap", "SCSS"],
     image: "https://i.ibb.co/G34XC7B9/desktop1.png",
     github: "https://github.com/elvannunal/EtsturClone",
+    live: "https://etstur-clone-elvannunal.vercel.app/",
+    live2: "https://etstur-clone-elvannunal.vercel.app/",
   },
   {
     id: "1",
@@ -75,7 +78,7 @@ export const projects: Project[] = [
 
 export const socialLinks = {
   github: "https://github.com/elvannunal",
-  linkedin: "https://www.linkedin.com/in/elvan-%C3%BCnal-b88a33225/",
+  linkedin: "https://www.linkedin.com/in/elvanunal/",
   email: "mailto:elvanunalll@gmail.com"
 };
 
